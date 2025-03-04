@@ -8,3 +8,8 @@ export interface Range {
   min: number;
   max: number;
 }
+
+export interface Score {
+  correct: number;
+  total: number;
+}
