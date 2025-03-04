@@ -190,7 +190,7 @@ export default function Home() {
               {/* Problem Display */}
               <div className="mb-8 text-center">
                 <p
-                  className="mb-8 font-bold text-4xl md:text-6xl"
+                  className="mb-8 font-bold text-xl sm:text-3xl md:text-4xl lg:text-6xl"
                   aria-label="Current Question"
                 >
                   {currentProblem.question}
@@ -237,7 +237,7 @@ export default function Home() {
               )}
 
               {/* Generate Button */}
-              <div className="flex flex-row justify-center items-center gap-4">
+              <div className="flex flex-row flex-wrap *:max-md:flex-1 justify-center items-center gap-4">
                 <Button
                   onClick={startNewSession}
                   className="flex items-center gap-2 bg-[#0a2a4a] hover:bg-[#4cc9ff] border border-[#4cc9ff] text-[#4cc9ff] hover:text-[#051a33] cursor-pointer"

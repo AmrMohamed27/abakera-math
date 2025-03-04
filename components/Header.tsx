@@ -10,7 +10,7 @@ type Props = {
 
 const Header = ({ score, streak }: Props) => {
   return (
-    <header className="mx-auto py-4 container">
+    <header className="mx-auto max-md:px-2 py-4 container">
       <div className="flex justify-between items-center">
         <Link href="/" className="flex items-center gap-2">
           <Image

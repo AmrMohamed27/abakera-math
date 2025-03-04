@@ -2,6 +2,14 @@ import React from "react";
 import { Tabs, TabsList, TabsTrigger } from "./ui/tabs";
 import { Divide, Plus, Shuffle, X } from "lucide-react";
 import { ProblemType } from "@/types";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Label } from "./ui/label";
 
 type Props = {
   problemType: ProblemType;
@@ -10,14 +18,15 @@ type Props = {
 
 const ProblemSelector = ({ problemType, handleProblemTypeChange }: Props) => {
   return (
-    <div className="mb-8">
+    <div className="flex flex-col gap-4 mb-8 px-2">
+      <Label className="">Select Problem Type</Label>
       <Tabs
         defaultValue="Random"
         value={problemType}
         onValueChange={handleProblemTypeChange}
-        className="w-full"
+        className="max-md:hidden w-full"
       >
-        <TabsList className="grid grid-cols-6 bg-[#0a2a4a]">
+        <TabsList className="bg-[#0a2a4a]">
           <TabsTrigger
             value="Random"
             className="data-[state=active]:bg-[#4cc9ff] data-[state=active]:text-[#051a33]"
@@ -48,6 +57,21 @@ const ProblemSelector = ({ problemType, handleProblemTypeChange }: Props) => {
           </TabsTrigger>
         </TabsList>
       </Tabs>
+      <Select>
+        <SelectTrigger className="md:hidden w-[180px]">
+          <SelectValue placeholder="Random" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="Random">Random</SelectItem>
+          <SelectItem value="Add Three Numbers">Add Three Numbers</SelectItem>
+          <SelectItem value="Multiply Two Numbers">
+            Multiply Two Numbers
+          </SelectItem>
+          <SelectItem value="Multiply and Divide">
+            Multiply and Divide
+          </SelectItem>
+        </SelectContent>
+      </Select>
     </div>
   );
 };
