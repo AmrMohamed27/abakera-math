@@ -125,8 +125,6 @@ export default function Home() {
 
   // Start a new practice session
   const startNewSession = () => {
-    setScore({ correct: 0, total: 0 });
-    setStreak(0);
     generateProblem();
   };
 
@@ -204,7 +202,7 @@ export default function Home() {
                     onChange={(e) => setUserAnswer(e.target.value)}
                     onKeyDown={handleKeyPress}
                     className="bg-[#051a33] py-6 border-[#4cc9ff]/30 text-xl text-center"
-                    disabled={!isTimerRunning || !!feedback}
+                    disabled={!isTimerRunning}
                   />
                   <Button
                     onClick={handleSubmit}

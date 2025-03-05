@@ -12,6 +12,7 @@ export const problemGenerator = ({
   problemType: ProblemType;
 }) => {
   const TenRange: Range = { min: 3, max: 10 };
+  const thirtyRange: Range = { min: 3, max: 30 };
   const HundredRange: Range = { min: 3, max: 100 };
   const ThousandRange: Range = { min: 100, max: 300 };
   const TwoThousandRange: Range = { min: 100, max: 2000 };
@@ -59,9 +60,9 @@ export const problemGenerator = ({
     case "Multiply Two Numbers": {
       const num1 = generateNumber(HundredRange);
       const num2 = generateNumber(HundredRange);
-      const num3 = generateNumber(HundredRange);
+      const num3 = generateNumber(thirtyRange);
       const num4 = generateNumber(TenRange);
-      const num5 = generateNumber(HundredRange);
+      const num5 = generateNumber(thirtyRange);
       const num6 = generateNumber(TenRange);
 
       const op1 = Math.random() > 0.5 ? "+" : "-";
@@ -86,12 +87,10 @@ export const problemGenerator = ({
 
     case "Multiply and Divide": {
       const randomChance = Math.random() > 0.5;
-      const num1 = generateNumber(randomChance ? ThousandRange : HundredRange);
-      const num2 = generateNumber(!randomChance ? ThousandRange : HundredRange);
+      const num1 = generateNumber(randomChance ? ThousandRange : thirtyRange);
+      const num2 = generateNumber(!randomChance ? ThousandRange : thirtyRange);
       const num3 = generateNumber(HundredRange);
-      const num4 = generateNumber(HundredRange);
-      const num5 = generateNumber(HundredRange);
-      const num6 = generateNumber(TenRange);
+      const num4 = generateNumber(thirtyRange);
       const div1 = Math.floor(Math.random() * 20) + 2;
       const div2 = Math.floor(Math.random() * 20) + 2;
 
@@ -101,22 +100,13 @@ export const problemGenerator = ({
       const cleanNum3 = Math.ceil(num3 / div2) * div2;
 
       const op1 = Math.random() > 0.5 ? "+" : "-";
-      const op2 = Math.random() > 0.5 ? "+" : "-";
 
-      question = `${cleanNum1} × ${dirtyNum1} / ${div1} ${op1} ${cleanNum3} × ${num4} / ${div2} ${op2} ${num5} × ${num6}`;
+      question = `${cleanNum1} × ${dirtyNum1} / ${div1} ${op1} ${cleanNum3} × ${num4} / ${div2}`;
 
       const part1 = Math.floor((cleanNum1 * dirtyNum1) / div1);
       const part2 = Math.floor((cleanNum3 * num4) / div2);
-      const part3 = num5 * num6;
 
-      answer =
-        op1 === "+"
-          ? op2 === "+"
-            ? part1 + part2 + part3
-            : part1 + part2 - part3
-          : op2 === "+"
-          ? part1 - part2 + part3
-          : part1 - part2 - part3;
+      answer = op1 === "+" ? part1 + part2 : part1 - part2;
       break;
     }
 
